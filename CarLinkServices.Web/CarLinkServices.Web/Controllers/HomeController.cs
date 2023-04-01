@@ -1,32 +1,50 @@
 ﻿using CarLinkServices.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace CarLinkServices.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly CarLinkServicesDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(CarLinkServicesDbContext context)
         {
-            _logger = logger;
+            _context = context;
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext context)
+        {
+            base.OnActionExecuted(context);
+
+            ViewBag.Cities = _context.Cities.ToArray();
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View("Index", _context.CarServices.Include(carService => carService.City));
         }
 
-        public IActionResult Privacy()
+        public IActionResult List(int cityId)
         {
-            return View();
+            if (!_context.Cities.Any(city => city.Id == cityId))
+                return NotFound();
+
+            return View("Index", _context.CarServices.Include(carService => carService.City).Where(carService => carService.CityId == cityId));
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Details(int carServiceId)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            CarService? carService = _context.CarServices.Include(carservice => carservice.City).FirstOrDefault(carservice => carservice.Id == carServiceId);
+
+            if (carService == null)
+                return NotFound();
+
+            ViewBag.Title = $"Szerviz részletei: {carService.Name} ({carService.City.Name})";
+
+            return View("Details", carService);
         }
     }
 }

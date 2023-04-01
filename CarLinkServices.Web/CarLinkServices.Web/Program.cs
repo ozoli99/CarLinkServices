@@ -1,4 +1,12 @@
+using CarLinkServices.Web.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<CarLinkServicesDbContext>(options => 
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -23,5 +31,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+using (var serviceScope = app.Services.CreateScope())
+{
+    DbInitializer.Initialize(serviceScope.ServiceProvider);
+}
 
 app.Run();

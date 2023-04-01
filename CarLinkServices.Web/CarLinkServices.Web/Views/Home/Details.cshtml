@@ -1,0 +1,84 @@
+﻿@model CarService
+
+@{
+    Func<ServiceType, string> serviceName = value =>
+    {
+        switch (value)  
+        {
+            case ServiceType.TireChange: return "Abroncs csere";
+            case ServiceType.DefectRepair: return "Defekt javítás";
+            case ServiceType.ClimateCharge: return "Klímatöltés";
+            case ServiceType.SuspensionAdjustment: return "Futómű állítás";
+            default: return "?";
+        }
+    };
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/site.css"/>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="header">
+        <div class="headerText">
+            <h1>CarLinkServices</h1>
+            <h3>A legjobb szerviz, csak egy kattintásra!</h3>
+        </div>
+    </div>
+    <div class="content">
+        <div class="leftColumn">
+            <h3>Keresés városok szerint</h3>
+            @if (ViewBag.Cities == null || ViewBag.Cities.Length == 0)
+            {
+                <span>Nincs regisztrált szervíz.</span>
+            }
+            else
+            {
+                <ul>
+                    @foreach (City city in ViewBag.Cities)
+                    {
+                        <li><a asp-controller="Home" asp-action="List" asp-route-cityId="@city.Id">@city.Name</a></li>
+                    }
+                </ul>
+            }
+        </div>
+        <div class="rightColumn">
+            @if (Model == null)
+            {
+                <div class="contentText">Jelenleg nincs elérhető szerviz.</div>
+            }
+            else
+            {
+                <div class="contentHead">@Model.Name</div>
+                <div class="contentBody">
+                    <table width="600">
+                        <tr>
+                            <td><strong>Város:</strong> @Model.City.Name</td>
+                        </tr>
+                    </table>
+                </div>
+                <table width="600">
+                    @foreach (Service service in Model.Services)
+                    {
+                        <tr>
+                            <td>
+                                <div class="contentDescription"><strong>@serviceName(service.Type):</strong> @service.Description</div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</body>
+</html>

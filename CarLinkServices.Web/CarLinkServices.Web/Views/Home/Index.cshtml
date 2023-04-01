@@ -1,8 +1,63 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<CarService>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CarLinkServices</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="header">
+        <div class="headerText">
+            <h1>CarLinkServices</h1>
+            <h3>A legjobb szerviz, csak egy kattintásra!</h3>
+        </div>
+    </div>
+    <div class="content">
+        <div class="leftColumn">
+            <h3>Keresés városok szerint</h3>
+            @if (ViewBag.Cities == null || ViewBag.Cities.Length == 0)
+            {
+                <span>Nincs regisztrált szervíz.</span>
+            }
+            else
+            {
+                <ul>
+                    @foreach (City city in ViewBag.Cities)
+                    {
+                        <li><a asp-controller="Home" asp-action="List" asp-route-cityId="@city.Id">@city.Name</a></li>
+                    }
+                </ul>
+            }
+        </div>
+        <div class="rightColumn">
+            @if (Model == null || Model.Count() == 0)
+            {
+                <div class="contentText">Jelenleg nincs elérhető szerviz.</div>
+            }
+            else
+            {
+                foreach (CarService carService in Model)
+                {
+                    <div class="carServiceItem">
+                        <div class="carServiceItemHead">
+                            <a asp-controller="Home" asp-action="Details" asp-route-carServiceId="@carService.Id">@carService.Name</a>
+                        </div>
+                        <div class="carServiceItemContent">
+                            <strong>Város: </strong>@carService.City.Name<br />
+                        </div>
+                    </div><br />
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>
