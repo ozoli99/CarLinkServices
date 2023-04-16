@@ -1,16 +1,29 @@
-﻿namespace CarLinkServices.Web.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace CarLinkServices.Web.Models
 {
-    public class DbInitializer
+    public static class DbInitializer
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        private static CarLinkServicesDbContext _context = null!;
+
+        public static void Initialize(IServiceProvider serviceProvider, string imageDirectory)
         {
-            CarLinkServicesDbContext context = serviceProvider.GetRequiredService<CarLinkServicesDbContext>();
+            _context = serviceProvider.GetRequiredService<CarLinkServicesDbContext>();
 
-            context.Database.EnsureCreated();
+            _context.Database.Migrate();
 
-            if (context.CarServices.Any())
+            if (_context.CarServices.Any())
                 return;
 
+            SeedCities();
+            SeedCarServices();
+            SeedServices();
+            SeedAppointments();
+            SeedCarServiceImages(imageDirectory);
+        }
+
+        private static void SeedCities()
+        {
             var cities = new City[]
             {
                 new City { Name = "Budapest" },
@@ -21,10 +34,13 @@
             };
             foreach (City city in cities)
             {
-                context.Cities.Add(city);
+                _context.Cities.Add(city);
             }
-            context.SaveChanges();
+            _context.SaveChanges();
+        }
 
+        private static void SeedCarServices() 
+        {
             var carServices = new CarService[]
             {
                 new CarService
@@ -80,10 +96,13 @@
             };
             foreach (CarService carService in carServices)
             {
-                context.CarServices.Add(carService);
+                _context.CarServices.Add(carService);
             }
-            context.SaveChanges();
+            _context.SaveChanges();
+        }
 
+        private static void SeedServices()
+        {
             var services = new Service[]
             {
                 new Service
@@ -257,11 +276,14 @@
             };
             foreach (Service service in services)
             {
-                context.Services.Add(service);
+                _context.Services.Add(service);
             }
-            context.SaveChanges();
+            _context.SaveChanges();
+        }
 
-            var appointments = new Appointment[] 
+        private static void SeedAppointments()
+        {
+            var appointments = new Appointment[]
             {
                 new Appointment
                 {
@@ -546,9 +568,59 @@
             };
             foreach (Appointment appointment in appointments)
             {
-                context.Appointments.Add(appointment);
+                _context.Appointments.Add(appointment);
             }
-            context.SaveChanges();
+            _context.SaveChanges();
+        }
+
+        private static void SeedCarServiceImages(string imageDirectory)
+        {
+            if (Directory.Exists(imageDirectory))
+            {
+                var images = new List<CarServiceImage>();
+
+                var largePath = Path.Combine(imageDirectory, "petra_1.png");
+                var smallPath = Path.Combine(imageDirectory, "petra_1_thumb.png");
+                if (File.Exists(largePath) && File.Exists(smallPath))
+                {
+                    images.Add(new CarServiceImage
+                    {
+                        CarServiceId = 1,
+                        ImageLarge = File.ReadAllBytes(largePath),
+                        ImageSmall = File.ReadAllBytes(smallPath)
+                    });
+                }
+
+                largePath = Path.Combine(imageDirectory, "petra_2.png");
+                smallPath = Path.Combine(imageDirectory, "petra_2_thumb.png");
+                if (File.Exists(largePath) && File.Exists(smallPath))
+                {
+                    images.Add(new CarServiceImage
+                    {
+                        CarServiceId = 1,
+                        ImageLarge = File.ReadAllBytes(largePath),
+                        ImageSmall = File.ReadAllBytes(smallPath)
+                    });
+                }
+
+                largePath = Path.Combine(imageDirectory, "cavallino_1.png");
+                smallPath = Path.Combine(imageDirectory, "cavallino_1_thumb.png");
+                if (File.Exists(largePath) && File.Exists(smallPath))
+                {
+                    images.Add(new CarServiceImage
+                    {
+                        CarServiceId = 3,
+                        ImageLarge = File.ReadAllBytes(largePath),
+                        ImageSmall = File.ReadAllBytes(smallPath)
+                    });
+                }
+
+                foreach (var image in images)
+                {
+                    _context.CarServiceImages.Add(image);
+                }
+                _context.SaveChanges();
+            }
         }
     }
 }

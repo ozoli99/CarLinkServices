@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EQhjwbfIY/V4iMVlcqFyR1mqYnAFEYa4Hks8HCIt91A=",
+  "Hash": "Mo6dKwvRT+DoY9fg8LgHRVYxouqF2+0eLE6GBSR87Kw=",
   "Source": "CarLinkServices.Web",
   "BasePath": "_content/CarLinkServices.Web",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\NoImage.png",
+      "SourceId": "CarLinkServices.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\",
+      "BasePath": "_content/CarLinkServices.Web",
+      "RelativePath": "images/NoImage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\NoImage.png"
     },
     {
       "Identity": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\wave.svg",

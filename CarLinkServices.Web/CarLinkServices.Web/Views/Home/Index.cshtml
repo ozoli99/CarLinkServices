@@ -1,95 +1,23 @@
 ﻿@model IEnumerable<CarService>
-@{
-    ViewData["Title"] = "CarLinkServices";
+
+@if (Model == null || Model.Count() == 0)
+{
+    <div class="alert alert-dark">Jelenleg nincs elérhető szerviz.</div>
 }
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" crossorigin="anonymous" />
-
-    <environment include="Development">
-        <link rel="stylesheet" href="~/css/site.css"/>
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-    <title>@ViewData["Title"]</title>
-</head>
-<body class="bg-dark">
-    <div class="container-fluid title-container">
-        <div class="container text-center mb-4 py-5 glass">
-            <h1 class="display-4 text-light font-weight-bold">@ViewData["Title"]</h1>
-            <h3 class="text-light mt-3">A legjobb szerviz, csak egy kattintásra!</h3>
-        </div>
-    </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="glass p-4 rounded">
-                    <h3 class="text-light">Keresés városok szerint</h3>
-                    <form class="search-form mb-3">
-                        <input type="text" class="form-control" placeholder="Keresés név vagy város alapján">
-                    </form>
-                    @if (ViewBag.Cities == null || ViewBag.Cities.Length == 0)
-                    {
-                        <span class="text-light">Nincs regisztrált szervíz.</span>
-                    }
-                    else
-                    {
-                        <ul class="list-group bg-transparent">
-                            @foreach (City city in ViewBag.Cities)
-                            {
-                                <li class="list-group-item bg-transparent text-light border-secondary"><a asp-controller="Home" asp-action="List" asp-route-cityId="@city.Id" class="text-light link-modern">@city.Name</a></li>
-                            }
-                        </ul>
-                    }
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (CarService carService in Model)
+        {
+            <div class="card">
+                <img src="@Url.Action("ImageForCarService", new { carServiceId = carService.Id})" />
+                <div>
+                    <h2>@carService.Name</h2>
+                    <h3><i class="fas fa-map-marker-alt"></i> @carService.City.Name</h3>
+                    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum, lo rem ipsum lor em ip sum.</p>
+                    <button><a asp-controller="Home" asp-action="Details" asp-route-carServiceId="@carService.Id">Mutasd a szervizt</a></button>
                 </div>
             </div>
-            <div class="col-md-8">
-                @if (Model == null || Model.Count() == 0)
-                {
-                    <div class="alert alert-dark">Jelenleg nincs elérhető szerviz.</div>
-                }
-                else
-                {
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                        @foreach (CarService carService in Model)
-                        {
-                            @*<div class="col">
-                                <div class="card glass text-light h-100 rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title car-service-name">
-                                            <a asp-controller="Home" asp-action="Details" asp-route-carServiceId="@carService.Id" class="text-light link-modern">@carService.Name</a>
-                                        </h5>
-                                        <p class="card-text car-service-location"><i class="fas fa-map-marker-alt"></i> @carService.City.Name</p>
-                                    </div>
-                                </div>
-                            </div>*@
-                            <div class="card">
-                                <img src="image.jpeg" />
-                                <div>
-                                    <h2>
-                                        <a asp-controller="Home" asp-action="Details" asp-route-carServiceId="@carService.Id" class="text-light link-modern">@carService.Name</a>
-                                    </h2>
-                                    <h3>
-                                        <i class="fas fa-map-marker-alt"></i> @carService.City.Name
-                                    </h3>
-                                    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum, lo rem ipsum lor em ip sum.</p>
-                                    <button>Show car service</button>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                }
-            </div>
-        </div>
+        }
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+}

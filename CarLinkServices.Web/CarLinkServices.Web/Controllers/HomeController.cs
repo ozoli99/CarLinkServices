@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 
 namespace CarLinkServices.Web.Controllers
 {
@@ -45,6 +44,32 @@ namespace CarLinkServices.Web.Controllers
             ViewBag.Title = $"Szerviz részletei: {carService.Name} ({carService.City.Name})";
 
             return View("Details", carService);
+        }
+
+        public FileResult ImageForCarService(int? carServiceId)
+        {
+            if (carServiceId == null)
+                return File("~/images/NoImage.png", "image/png");
+
+            byte[]? imageContent = _context.CarServiceImages.Where(image => image.CarServiceId == carServiceId).Select(image => image.ImageSmall).FirstOrDefault();
+
+            if (imageContent == null)
+                return File("~/images/NoImage.png", "image/png");
+
+            return File(imageContent, "image/png");
+        }
+
+        public FileResult Image(int? imageId, bool large = false)
+        {
+            if (imageId == null)
+                return File("~/images/NoImage.png", "image/png");
+
+            byte[]? imageContent = _context.CarServiceImages.Where(image => image.Id == imageId).Select(image => large ? image.ImageLarge : image.ImageSmall).FirstOrDefault();
+
+            if (imageContent == null)
+                return File("~/images/NoImage.png", "image/png");
+
+            return File(imageContent, "image/png");
         }
     }
 }

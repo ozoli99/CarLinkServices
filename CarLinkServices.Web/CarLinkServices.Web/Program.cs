@@ -34,7 +34,7 @@ app.MapControllerRoute(
 
 using (var serviceScope = app.Services.CreateScope())
 {
-    DbInitializer.Initialize(serviceScope.ServiceProvider);
+    DbInitializer.Initialize(serviceScope.ServiceProvider, builder.Configuration.GetValue<string>("ImageStore"));
 }
 
 app.Run();

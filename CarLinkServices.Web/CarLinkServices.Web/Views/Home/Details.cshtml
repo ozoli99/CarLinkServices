@@ -1,7 +1,5 @@
 ﻿@model CarService
 @{
-    ViewData["Title"] = "Car Service Details";
-
     Func<ServiceType, string> serviceName = value =>
     {
         switch (value)
@@ -15,118 +13,50 @@
     };
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .title-container {
-            background: linear-gradient(135deg, rgba(58, 58, 58, 0.5), rgba(34, 34, 34, 0.5));
-            backdrop-filter: blur(10px);
-            border-bottom: 3px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .title-container .glass {
-            background: rgba(108, 117, 125, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 30px;
-        }
-
-        .title-container h1, .title-container h3 {
-            color: #fff;
-        }
-
-        .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .glass {
-            background: rgba(108, 117, 125, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .link-modern {
-            color: #9acffa;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .link-modern:hover,
-        .link-modern:focus {
-            color: #63a6e4;
-            text-decoration: none;
-        }
-
-        .car-service-name {
-            color: #f0ad4e;
-        }
-
-        .car-service-location {
-            color: #ccc;
-        }
-    </style>
-    <title>@ViewData["Title"]</title>
-
-    <environment include="Development">
-        <link rel="stylesheet" href="~/css/site.css"/>
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-</head>
-<body class="bg-dark">
-    <div class="container-fluid title-container">
-        <div class="container text-center mb-4 py-5">
-            <h1 class="display-4 text-light font-weight-bold">@ViewData["Title"]</h1>
-            <h3 class="text-light mt-3">A legjobb szerviz, csak egy kattintásra!</h3>
-        </div>
+@if (Model == null)
+{
+    <div class="contentText">Jelenleg nincs elérhető szerviz.</div>
+}
+else
+{
+    <div class="contentHead">@Model.Name</div>
+    <div class="contentBody">
+        <table width="600">
+            <tr>
+                <td>
+                    <strong>Város:</strong> @Model.City.Name
+                </td>
+            </tr>
+            @if (ViewBag.Images != null && ViewBag.Images.Count > 0)
+            {
+                <tr>
+                    <td>
+                        <div class="contentComment">
+                            <strong>Képek:</strong><br />
+                            @foreach (int id in ViewBag.Images)
+                            {
+                                <a asp-action="Image" asp-route-imageId="@id" asp-route-large="true" target="_blank">
+                                    <img src="@Url.Action("Image", new { imageId = id })" class="contentImage" />
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
     </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                @if (Model == null)
-                {
-                    <div class="alert alert-dark">Jelenleg nincs elérhető szerviz.</div>
-                }
-                else
-                {
-                    <div class="card glass text-light mb-3 rounded">
-                        <div class="card-header bg-transparent border-bottom border-secondary">
-                            <h2 class="car-service-name">@Model.Name</h2>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text car-service-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>@Model.City.Name</span>
-                            </p>
-                            <p class="card-text"><strong>Szolgáltatások:</strong></p>
-                            <ul>
-                                @foreach (Service service in Model.Services)
-                                {
-                                    <li class="text-light">@serviceName(service.Type): @service.Description</li>
-                                }
-                            </ul>
-                            <a asp-controller="Home" asp-action="BookAppointment" asp-route-carServiceId="@Model.Id" class="btn btn-outline-light">Időpontfoglalás</a>
-                        </div>
+    <table width="600">
+        @foreach (Service service in Model.Services)
+        {
+            <tr>
+                <td>
+                    <div class="contentComment">
+                        <strong>
+                            @serviceName(service.Type)
+                        </strong> @service.Description
                     </div>
-                }
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+                </td>
+            </tr>
+        }
+    </table>
+}

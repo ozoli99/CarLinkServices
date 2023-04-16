@@ -1,0 +1,61 @@
+﻿@using CarLinkServices.Web.Models;
+@{
+    ViewData["Title"] = "CarLinkServices";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" crossorigin="anonymous" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <title>@ViewData["Title"]</title>
+</head>
+<body class="bg-dark">
+    <div class="container-fluid title-container">
+        <div class="container text-center mb-4 py-5 glass">
+            <h1 class="display-4 text-light font-weight-bold">@ViewData["Title"]</h1>
+            <h3 class="text-light mt-3">A legjobb szerviz, csak egy kattintásra!</h3>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="glass p-4 rounded">
+                    <h3 class="text-light">Keresés városok szerint</h3>
+                    <form class="search-form mb-3">
+                        <input type="text" class="form-control" placeholder="Keresés név vagy város alapján">
+                    </form>
+                    @if (ViewBag.Cities == null || ViewBag.Cities.Length == 0)
+                    {
+                        <span class="text-light">Nincs regisztrált szervíz.</span>
+                    }
+                    else
+                    {
+                        <ul class="list-group bg-transparent">
+                            @foreach (City city in ViewBag.Cities)
+                            {
+                                <li class="list-group-item bg-transparent text-light border-secondary"><a asp-controller="Home" asp-action="List" asp-route-cityId="@city.Id" class="text-light link-modern">@city.Name</a></li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+            <div class="col-md-8">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
