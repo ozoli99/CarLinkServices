@@ -1,4 +1,4 @@
-body {
+/*body {
     font-family: Arial, sans-serif;
     font-size: 10pt;
     color: #000000;
@@ -175,4 +175,127 @@ div.contentPrice {
 img.contentImage {
     border: 1pt solid #000000;
     margin: 5pt;
+}
+*/
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    background-image: url("../images/wave.svg")
+}
+
+.title-container {
+    background: linear-gradient(135deg, rgba(58, 58, 58, 0.5), rgba(34, 34, 34, 0.5));
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.15);
+}
+
+.title-container .glass {
+    background: rgba(108, 117, 125, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.title-container h1, .title-container h3 {
+    color: #fff;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.glass {
+    background: rgba(108, 117, 125, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.link-modern {
+    color: #9acffa;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link-modern:hover, .link-modern:focus {
+    color: #63a6e4;
+    text-decoration: none;
+}
+
+.car-service-name {
+    color: #f0ad4e;
+}
+
+.car-service-location {
+    color: #ccc;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    width: 75vw;
+    max-width: 650px;
+    padding: 50px 30px 50px 20px;
+
+    background: rgba( 155, 155, 155, 0.3 );
+    /*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
+    backdrop-filter: blur( 11px );
+    -webkit-backdrop-filter: blur( 11px );
+    border-radius: 10px;
+}
+
+.card img {
+    max-width: 280px;
+    width: 28vw;
+    height: 300px;
+    object-fit: cover;
+    margin-left: -60px;
+    margin-right: 30px;
+    border-radius: inherit;
+    box-shadow: 0 60px 40px rgb(0 0 0 / 8%);
+}
+
+.card h3 {
+    color: rgb(0 0 0 / 90%);
+}
+
+.card p {
+    color: rgb(0 0 0 /70%);
+}
+
+.card button {
+    border: 0;
+    background: #5448de;
+    color: #f8f8f8;
+    font-family: inherit;
+    padding: 16px 26px;
+    font-size: 16px;
+    border-radius: 40px;
+}
+
+@media (width <= 740px) {
+    .card {
+        flex-direction: column;
+        text-align: center;
+        margin: 0 40px;
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 100%;
+    }
+
+    .card img {
+        margin: -100px 0 30px 0;
+        width: 100%;
+        max-width: 1000px;
+    }
 }
