@@ -288,280 +288,240 @@ namespace CarLinkServices.Web.Models
                 new Appointment
                 {
                     StartTime = DateTime.Now,
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 1,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(30),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 1,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(60),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 1,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(90),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 1,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(60),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 2,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(150),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 2,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(180),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 2,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(240),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 2,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now,
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 3,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(90),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 3,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(240),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 3,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(300),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 3,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(300),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 4,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(330),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 4,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(360),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 4,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(390),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 4,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now,
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 5,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(30),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 5,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(60),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 5,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(90),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 5,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(180),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 6,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(300),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 6,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(420),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 6,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(450),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 6,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now,
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 7,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(30),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 7,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(60),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 7,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(90),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 7,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now,
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 8,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(30),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 8,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(60),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 8,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(90),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 8,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now,
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 9,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(30),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 9,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(60),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 9,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(90),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 9,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now,
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 10,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(30),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 10,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(60),
-                    Duration = 30,
                     IsBooked = true,
                     ServiceId = 10,
                 },
                 new Appointment
                 {
                     StartTime = DateTime.Now.AddMinutes(90),
-                    Duration = 30,
                     IsBooked = false,
                     ServiceId = 10,
                 },

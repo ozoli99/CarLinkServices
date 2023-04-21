@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\University\Webes alkalmazasok fejlesztese\CarLinkServices\CarLinkServices.Web\CarLinkServices.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/Home/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -24,8 +32,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/Home/_CarServiceDetailsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQ2FyU2VydmljZURldGFpbHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/Home/_CarServiceList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQ2FyU2VydmljZUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/University/Webes alkalmazasok fejlesztese/CarLinkServices/CarLinkServices.Web/CarLinkServices.Web/Views/_ViewImports.cshtml]

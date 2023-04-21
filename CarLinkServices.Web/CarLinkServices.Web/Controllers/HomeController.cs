@@ -23,7 +23,9 @@ namespace CarLinkServices.Web.Controllers
 
         public IActionResult Index()
         {
-            return View("Index", _context.CarServices.Include(carService => carService.City));
+            return View("Index", _context.CarServices
+                                            .Include(carService => carService.City)
+                                            .Include(carService => carService.Services));
         }
 
         public IActionResult List(int cityId)
@@ -31,19 +33,38 @@ namespace CarLinkServices.Web.Controllers
             if (!_context.Cities.Any(city => city.Id == cityId))
                 return NotFound();
 
-            return View("Index", _context.CarServices.Include(carService => carService.City).Where(carService => carService.CityId == cityId));
+            return View("Index", _context.CarServices
+                                            .Include(carService => carService.City)
+                                            .Include(carService => carService.Services)
+                                            .Where(carService => carService.CityId == cityId));
         }
 
-        public IActionResult Details(int carServiceId)
+        public IActionResult Search(string search)
         {
-            CarService? carService = _context.CarServices.Include(carservice => carservice.City).FirstOrDefault(carservice => carservice.Id == carServiceId);
+            var carServices = _context.CarServices
+                                        .Include(carService => carService.City)
+                                        .Include(carService => carService.Services)
+                                        .ToList();
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                carServices = carServices.Where(carService => carService.City.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return PartialView("_CarServiceList", carServices);
+        }
 
+        [HttpGet]
+        [Route("Home/CarServiceDetailsPartial/{carServiceId}")]
+        public IActionResult CarServiceDetailsPartial(int carServiceId)
+        {
+            CarService? carService = _context.CarServices
+                                                .Include(carservice => carservice.City)
+                                                .Include(carservice => carservice.Services)
+                                                .FirstOrDefault(carservice => carservice.Id == carServiceId);
             if (carService == null)
+            {
                 return NotFound();
-
-            ViewBag.Title = $"Szerviz részletei: {carService.Name} ({carService.City.Name})";
-
-            return View("Details", carService);
+            }
+            return PartialView("_CarServiceDetailsPartial", carService);
         }
 
         public FileResult ImageForCarService(int? carServiceId)
@@ -51,7 +72,10 @@ namespace CarLinkServices.Web.Controllers
             if (carServiceId == null)
                 return File("~/images/NoImage.png", "image/png");
 
-            byte[]? imageContent = _context.CarServiceImages.Where(image => image.CarServiceId == carServiceId).Select(image => image.ImageSmall).FirstOrDefault();
+            byte[]? imageContent = _context.CarServiceImages
+                                            .Where(image => image.CarServiceId == carServiceId)
+                                            .Select(image => image.ImageSmall)
+                                            .FirstOrDefault();
 
             if (imageContent == null)
                 return File("~/images/NoImage.png", "image/png");
@@ -64,7 +88,10 @@ namespace CarLinkServices.Web.Controllers
             if (imageId == null)
                 return File("~/images/NoImage.png", "image/png");
 
-            byte[]? imageContent = _context.CarServiceImages.Where(image => image.Id == imageId).Select(image => large ? image.ImageLarge : image.ImageSmall).FirstOrDefault();
+            byte[]? imageContent = _context.CarServiceImages
+                                            .Where(image => image.Id == imageId)
+                                            .Select(image => large ? image.ImageLarge : image.ImageSmall)
+                                            .FirstOrDefault();
 
             if (imageContent == null)
                 return File("~/images/NoImage.png", "image/png");

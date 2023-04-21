@@ -17,8 +17,28 @@
       "PackagePath": "staticwebassets\\images\\NoImage.png"
     },
     {
-      "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\wave.svg",
-      "PackagePath": "staticwebassets\\images\\wave.svg"
+      "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\background.jpg",
+      "PackagePath": "staticwebassets\\images\\background.jpg"
+    },
+    {
+      "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\car-repair.png",
+      "PackagePath": "staticwebassets\\images\\car-repair.png"
+    },
+    {
+      "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\check.png",
+      "PackagePath": "staticwebassets\\images\\check.png"
+    },
+    {
+      "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\close.png",
+      "PackagePath": "staticwebassets\\images\\close.png"
+    },
+    {
+      "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\location.png",
+      "PackagePath": "staticwebassets\\images\\location.png"
+    },
+    {
+      "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\images\\search.png",
+      "PackagePath": "staticwebassets\\images\\search.png"
     },
     {
       "Id": "D:\\University\\Webes alkalmazasok fejlesztese\\CarLinkServices\\CarLinkServices.Web\\CarLinkServices.Web\\wwwroot\\js\\site.js",

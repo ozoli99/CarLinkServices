@@ -1,0 +1,11 @@
+﻿@model CarLinkServices.Web.Models.CarService
+
+<h2 class="title">@Model.Name</h2>
+<p>City: @Model.City.Name</p>
+<p>Services:</p>
+<ul>
+    @foreach (Service service in Model.Services)
+    {
+        <li>@service.Type - @service.Description</li>
+    }
+</ul>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CarService>
+@{
+    string GetServiceImage(CarService carService, ServiceType serviceType)
+    {
+        return carService.Services.Any(s => s.Type == serviceType) ? "check.png" : "close.png";
+    }
+}
+
+<h1 class="title">Szervizek</h1>
+@if (ViewBag.Cities == null || ViewBag.Cities.Length == 0)
+{
+    <span class="text-light">Nincs regisztrált szervíz.</span>
+}
+else
+{
+    foreach (CarService carService in Model)
+    {
+        <div class="card" data-city-name="@carService.City.Name" data-car-service-id="@carService.Id">
+            <div class="card-column">
+                <img src="~/images/car-repair.png" alt="Car Service icon" class="card-icon" />
+                <h3>@carService.Name</h3>
+            </div>
+            <div class="card-column">
+                <img src="~/images/location.png" alt="Location icon" class="card-icon" />
+                <h3>@carService.City.Name</h3>
+            </div>
+            <div class="card-column">
+                <img src="~/images/@GetServiceImage(carService, ServiceType.TireChange)" alt="Tire Change" class="card-icon" />
+            </div>
+            <div class="card-column">
+                <img src="~/images/@GetServiceImage(carService, ServiceType.ClimateCharge)" alt="Climate Charge" class="card-icon" />
+            </div>
+            <div class="card-column">
+                <img src="~/images/@GetServiceImage(carService, ServiceType.DefectRepair)" alt="Defect Repair" class="card-icon" />
+            </div>
+            <div class="card-column">
+                <img src="~/images/@GetServiceImage(carService, ServiceType.SuspensionAdjustment)" alt="Suspension Adjustment" class="card-icon" />
+            </div>
+        </div>
+    }
+}

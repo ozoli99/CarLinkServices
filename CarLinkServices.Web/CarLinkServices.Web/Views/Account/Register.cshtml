@@ -1,0 +1,152 @@
+﻿@using CarLinkServices.Web.Models;
+
+@model RegisterViewModel
+@*<form asp-controller="Account" asp-action="Register">
+    <table>
+        <tr>
+            <td colspan="3">
+                <div class="failureNotification">@Html.ValidationSummary(true, "A regisztráció sikertelen!")</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="contentHead">
+                    Személyes adatok:
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td width="120">
+                Név:
+            </td>
+            <td class="failureNotification" colspan="2">
+                <input asp-for="GuestName" size="40" />
+                <span asp-validation-for="GuestName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="120">
+                E-mail cím:
+            </td>
+            <td class="failureNotification" colspan="2">
+                <input asp-for="GuestEmail" size="40" />
+                <span asp-validation-for="GuestEmail"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="120">
+                Autó típusa:
+            </td>
+            <td class="failureNotification" colspan="2">
+                <input asp-for="GuestCarType" size="40" />
+                <span asp-validation-for="GuestCarType"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="120">
+                Autó rendszáma:
+            </td>
+            <td class="failureNotification" colspan="2">
+                <input asp-for="GuestCarPlate" size="40" />
+                <span asp-validation-for="GuestCarPlate"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="contentHead">
+                    Bejelentkezési adatok:
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" colspan="2">
+                Felhasználónév:
+            </td>
+            <td class="failureNotification">
+                <input asp-for="UserName" />
+                <span asp-validation-for="UserName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" colspan="2">
+                Jelszó:
+            </td>
+            <td class="failureNotification">
+                <input asp-for="UserPassword" />
+                <span asp-validation-for="UserPassword"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" colspan="2">
+                Jelszó megismétlése:
+            </td>
+            <td class="failureNotification">
+                <input asp-for="UserConfirmPassword" />
+                <span asp-validation-for="UserConfirmPassword"></span>
+            </td>
+        </tr>
+    </table>
+</form>*@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="registration-container">
+                <h2 class="text-center mb-5">Regisztráció</h2>
+                <form asp-controller="Account" asp-action="Register" class="register-form">
+                    <div class="text-danger mb-3">
+                        <div class="failureNotification">@Html.ValidationSummary(true, "A regisztráció sikertelen!")</div>
+                    </div>
+                    <fieldset class="mb-4">
+                        <legend>Személyes adatok</legend>
+                        <div class="form-group">
+                            <label for="GuestName">Név</label>
+                            <input asp-for="GuestName" class="form-control" />
+                            <span asp-validation-for="GuestName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="GuestEmail">E-mail cím</label>
+                            <input asp-for="GuestEmail" class="form-control" />
+                            <span asp-validation-for="GuestEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="GuestCarType">Autó típusa</label>
+                            <input asp-for="GuestCarType" class="form-control" />
+                            <span asp-validation-for="GuestCarType" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="GuestCarPlate">Autó rendszáma</label>
+                            <input asp-for="GuestCarPlate" class="form-control" />
+                            <span asp-validation-for="GuestCarPlate" class="text-danger"></span>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Bejelentkezési adatok</legend>
+                        <div class="form-group">
+                            <label for="UserName">Felhasználónév</label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="UserPassword">Jelszó</label>
+                            <input asp-for="UserPassword" type="password" class="form-control" />
+                            <span asp-validation-for="UserPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="UserConfirmPassword">Jelszó megismétlése</label>
+                            <input asp-for="UserConfirmPassword" type="password" class="form-control" />
+                            <span asp-validation-for="UserConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </fieldset>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary">Regisztráció</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
